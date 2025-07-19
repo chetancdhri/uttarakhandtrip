@@ -1,0 +1,2980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Escape - College Trip to Himachal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFD166;
+            --dark: #1A1A2E;
+            --dark-secondary: #16213E;
+            --light: #F8F9FA;
+            --gray: #E6E6E6;
+            --transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 107, 107, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1.5s linear infinite;
+            position: relative;
+        }
+
+        .loader::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 8px solid rgba(78, 205, 196, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--secondary);
+            animation: spin 2s linear infinite;
+        }
+
+        .loader::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: -25px;
+            right: -25px;
+            bottom: -25px;
+            border: 8px solid rgba(255, 209, 102, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 2.5s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 10px;
+            border: 2px solid var(--dark-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(15px);
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+
+        header.hide {
+            transform: translateY(-100%);
+        }
+
+        header.scrolled {
+            padding: 15px 5%;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
+            background: rgba(22, 33, 62, 0.95);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transform: translateX(-100%);
+            transition: var(--transition);
+        }
+
+        .logo:hover::after {
+            transform: translateX(0);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .logo:hover i {
+            transform: rotate(360deg);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--light);
+            transition: var(--transition);
+            z-index: 1001;
+        }
+
+        .menu-toggle:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        /* Hero Section - Enhanced */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            perspective: 1000px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1712510817140-917938f92e5b?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+            transform: translateZ(-1px) scale(1.2);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 800px;
+            text-align: center;
+            animation: fadeInUp 1s ease 0.5s both;
+            transform-style: preserve-3d;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to right, #FF6B6B, #4ECDC4, #FFD166);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(30px) translateZ(20px);
+            opacity: 0;
+            animation: slideUpFadeIn 1s ease 0.7s forwards;
+            position: relative;
+        }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translateY(30px) translateZ(10px);
+            opacity: 0;
+            animation: slideUpFadeIn 1s ease 0.9s forwards;
+        }
+
+        .hero-buttons {
+            transform: translateY(30px) translateZ(5px);
+            opacity: 0;
+            animation: slideUpFadeIn 1s ease 1.1s forwards;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            font-size: 1.1rem;
+            margin: 10px;
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) translateZ(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .cta-button-secondary:hover {
+            background: var(--primary);
+            color: var(--light);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            color: var(--light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 1s ease 1.5s forwards, bounce 2s infinite 2.5s;
+            transition: var(--transition);
+        }
+
+        .scroll-down:hover {
+            color: var(--primary);
+            transform: translateX(-50%) scale(1.2);
+        }
+
+        /* Floating Elements - Enhanced */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: 2;
+            animation: float 15s infinite ease-in-out;
+            will-change: transform;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: 10%;
+            left: 10%;
+            animation-duration: 20s;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary);
+            top: 60%;
+            left: 80%;
+            animation-duration: 25s;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            top: 30%;
+            left: 70%;
+            animation-duration: 18s;
+            animation-delay: 4s;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            background: #9C27B0;
+            top: 80%;
+            left: 20%;
+            animation-duration: 22s;
+            animation-delay: 1s;
+            opacity: 0.3;
+        }
+
+        .floating-element:nth-child(5) {
+            width: 350px;
+            height: 350px;
+            background: #2196F3;
+            top: 40%;
+            left: 50%;
+            animation-duration: 30s;
+            animation-delay: 3s;
+            opacity: 0.2;
+        }
+
+        /* About Section - Enhanced */
+        .section {
+            padding: 100px 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="%231A1A2E" cx="25" cy="25" r="2"/><circle fill="%231A1A2E" cx="75" cy="75" r="2"/><circle fill="%231A1A2E" cx="75" cy="25" r="2"/><circle fill="%231A1A2E" cx="25" cy="75" r="2"/></svg>');
+            background-size: 100px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUpFadeIn 1s ease forwards;
+        }
+
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--light);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .section-title h2 span {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: slideRightFadeIn 1s ease forwards;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1));
+            z-index: 1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .about-image:hover::before {
+            opacity: 1;
+        }
+
+        .about-image:hover {
+            transform: translateY(-10px) translateX(0);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+            transform: scale(1);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            transform: translateX(50px);
+            opacity: 0;
+            animation: slideLeftFadeIn 1s ease forwards;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 25px;
+            background: var(--dark-secondary);
+            border-radius: 15px;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(30px);
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .feature-box:hover::before {
+            opacity: 1;
+        }
+
+        .feature-box:nth-child(1) {
+            animation: slideUpFadeIn 1s ease 0.3s forwards;
+        }
+        .feature-box:nth-child(2) {
+            animation: slideUpFadeIn 1s ease 0.5s forwards;
+        }
+        .feature-box:nth-child(3) {
+            animation: slideUpFadeIn 1s ease 0.7s forwards;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px) translateX(0);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(30, 30, 62, 0.7);
+        }
+
+        .feature-box i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+
+        .feature-box:hover i {
+            transform: scale(1.2);
+        }
+
+        .feature-box h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--light);
+            transition: var(--transition);
+        }
+
+        .feature-box:hover h4 {
+            color: var(--primary);
+        }
+
+        .feature-box p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .feature-box:hover p {
+            color: var(--light);
+        }
+
+        /* Itinerary Section - Enhanced */
+        .itinerary {
+            background: var(--dark-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .itinerary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%231A1A2E" d="M30 10 L50 30 L70 10 L90 30 L70 50 L90 70 L70 90 L50 70 L30 90 L10 70 L30 50 L10 30 Z"/></svg>');
+            background-size: 80px;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .journey-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 0;
+            z-index: 1;
+        }
+
+        .journey-path {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        }
+
+        .journey-stops {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            z-index: 2;
+        }
+
+        .journey-stop {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .journey-stop.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .journey-stop:nth-child(1) { transition-delay: 0.2s; }
+        .journey-stop:nth-child(2) { transition-delay: 0.4s; }
+        .journey-stop:nth-child(3) { transition-delay: 0.6s; }
+        .journey-stop:nth-child(4) { transition-delay: 0.8s; }
+        .journey-stop:nth-child(5) { transition-delay: 1.0s; }
+        .journey-stop:nth-child(6) { transition-delay: 1.2s; }
+        .journey-stop:nth-child(7) { transition-delay: 1.4s; }
+        .journey-stop:nth-child(8) { transition-delay: 1.6s; }
+        .journey-stop:nth-child(9) { transition-delay: 1.8s; }
+        .journey-stop:nth-child(10) { transition-delay: 2.0s; }
+
+        .stop-left {
+            justify-content: flex-start;
+            text-align: right;
+            padding-right: 60px;
+        }
+
+        .stop-right {
+            justify-content: flex-end;
+            text-align: left;
+            padding-left: 60px;
+        }
+
+        .stop-content {
+            width: 45%;
+            padding: 30px;
+            background: var(--dark);
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .stop-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .stop-content:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .stop-content:hover::before {
+            width: 8px;
+        }
+
+        .stop-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 8px rgba(255, 107, 107, 0.3);
+            z-index: 3;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: var(--transition);
+        }
+
+        .stop-content:hover ~ .stop-marker {
+            transform: translateX(-50%) scale(1.2);
+            box-shadow: 0 0 0 12px rgba(255, 107, 107, 0.4);
+        }
+
+        .stop-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--dark-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            z-index: 4;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .stop-content:hover ~ .stop-icon {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .stop-icon.train {
+            background: var(--primary);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .stop-icon.bus {
+            background: var(--secondary);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .stop-icon.mountain {
+            background: var(--accent);
+            color: var(--dark);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .stop-icon.temple {
+            background: #9C27B0;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .stop-icon.snow {
+            background: #2196F3;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .stop-date {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .stop-content:hover .stop-date {
+            color: var(--secondary);
+        }
+
+        .stop-date i {
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .stop-content:hover .stop-date i {
+            transform: rotate(360deg);
+        }
+
+        .stop-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+
+        .stop-content:hover .stop-title {
+            color: var(--accent);
+        }
+
+        .stop-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .stop-content:hover .stop-description {
+            color: var(--light);
+        }
+
+        .stop-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 15px;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(1);
+            filter: brightness(0.9);
+        }
+
+        .stop-image:hover {
+            transform: scale(1.05);
+            filter: brightness(1);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+         /* Hotels Section */
+    .hotels {
+        background: var(--dark);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hotels::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231A1A2E" width="50" height="50" x="25" y="25"/></svg>');
+        background-size: 50px;
+        opacity: 0.05;
+        z-index: 0;
+    }
+
+    .hotel-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .hotel-category {
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: var(--transition);
+    }
+
+    .hotel-category.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hotel-category:nth-child(1) { transition-delay: 0.2s; }
+    .hotel-category:nth-child(2) { transition-delay: 0.4s; }
+    .hotel-category:nth-child(3) { transition-delay: 0.6s; }
+    .hotel-category:nth-child(4) { transition-delay: 0.8s; }
+
+    .hotel-location {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        color: var(--light);
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding-left: 50px;
+    }
+
+    .hotel-location i {
+        position: absolute;
+        left: 0;
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--light);
+    }
+
+    .hotel-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .hotel-card {
+        background: var(--dark-secondary);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        transition: var(--transition);
+        position: relative;
+        z-index: 1;
+    }
+
+    .hotel-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    .hotel-image {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .hotel-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+    }
+
+    .hotel-card:hover .hotel-image img {
+        transform: scale(1.1);
+    }
+
+    .hotel-info {
+        padding: 20px;
+    }
+
+    .hotel-info h4 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        color: var(--light);
+        font-family: 'Montserrat', sans-serif;
+        transition: var(--transition);
+    }
+
+    .hotel-card:hover .hotel-info h4 {
+        color: var(--primary);
+    }
+
+    .hotel-rating {
+        margin-bottom: 10px;
+        color: var(--accent);
+    }
+
+    .hotel-rating i {
+        margin-right: 3px;
+    }
+
+    .hotel-rating span {
+        margin-left: 10px;
+        color: var(--gray);
+        font-size: 0.9rem;
+    }
+
+    .hotel-description {
+        color: var(--gray);
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        transition: var(--transition);
+    }
+
+    .hotel-card:hover .hotel-description {
+        color: var(--light);
+    }
+
+    .hotel-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .hotel-features span {
+        background: rgba(30, 30, 62, 0.7);
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: var(--gray);
+        display: flex;
+        align-items: center;
+        transition: var(--transition);
+    }
+
+    .hotel-features i {
+        margin-right: 5px;
+        font-size: 0.8rem;
+        color: var(--primary);
+        transition: var(--transition);
+    }
+
+    .hotel-card:hover .hotel-features span {
+        background: rgba(255, 107, 107, 0.1);
+        color: var(--light);
+    }
+
+    .hotel-card:hover .hotel-features i {
+        color: var(--secondary);
+    }
+
+    @media (max-width: 768px) {
+        .hotel-cards {
+            grid-template-columns: 1fr;
+        }
+        
+        .hotel-location {
+            font-size: 1.5rem;
+        }
+    }
+
+        /* Packages Section - Enhanced */
+        .packages {
+            text-align: center;
+            position: relative;
+        }
+
+        .package-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            perspective: 1000px;
+        }
+
+        .package-card {
+            background: var(--dark-secondary);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 350px;
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(50px) rotateY(15deg);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .package-card.in-view {
+            opacity: 1;
+            transform: translateY(0) rotateY(0);
+        }
+
+        .package-card:nth-child(1) { transition-delay: 0.2s; }
+        .package-card:nth-child(2) { transition-delay: 0.4s; }
+        .package-card:nth-child(3) { transition-delay: 0.6s; }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .package-card:hover {
+            transform: translateY(-15px) rotateY(0) scale(1.03);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .package-card:hover::before {
+            height: 8px;
+        }
+
+        .package-header {
+            padding: 40px 30px;
+            background: rgba(30, 30, 62, 0.7);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-header {
+            background: rgba(30, 30, 62, 0.9);
+        }
+
+        .package-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1519817650390-64a93db51149?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-header::after {
+            opacity: 0.2;
+            transform: scale(1.1);
+        }
+
+        .package-name {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: var(--light);
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-name {
+            color: var(--accent);
+        }
+
+        .package-price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-price {
+            color: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        .package-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-price span {
+            color: var(--light);
+        }
+
+        .package-duration {
+            color: var(--gray);
+            position: relative;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-duration {
+            color: var(--light);
+        }
+
+        .package-features {
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-features {
+            background: rgba(30, 30, 62, 0.7);
+        }
+
+        .package-features ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .package-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(108, 117, 125, 0.2);
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-features li {
+            color: var(--light);
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+
+        .package-features li i {
+            margin-right: 10px;
+            font-size: 0.9rem;
+            width: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .package-card:hover .package-features li i {
+            transform: scale(1.2);
+        }
+
+        .fa-check {
+            color: var(--secondary);
+        }
+
+        .fa-times {
+            color: var(--primary);
+        }
+
+        .package-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            width: 80%;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .package-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+        }
+
+        .package-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .package-button:hover::before {
+            left: 100%;
+        }
+
+        .highlight-card {
+            transform: scale(1.05) translateY(0) rotateY(0);
+            border: 2px solid var(--primary);
+            z-index: 2;
+        }
+
+        .highlight-card .package-header::after {
+            opacity: 0.2;
+        }
+
+        .highlight-card:hover {
+            transform: scale(1.08) translateY(-15px);
+        }
+
+        /* Gallery Section - Enhanced */
+        .gallery {
+            background: var(--dark-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%231A1A2E" width="50" height="50" x="25" y="25"/></svg>');
+            background-size: 50px;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+            perspective: 1000px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            transition: var(--transition);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: scale(0.9) rotateY(15deg);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .gallery-item.in-view {
+            opacity: 1;
+            transform: scale(1) rotateY(0);
+        }
+
+        .gallery-item:nth-child(1) { transition-delay: 0.1s; }
+        .gallery-item:nth-child(2) { transition-delay: 0.2s; }
+        .gallery-item:nth-child(3) { transition-delay: 0.3s; }
+        .gallery-item:nth-child(4) { transition-delay: 0.4s; }
+        .gallery-item:nth-child(5) { transition-delay: 0.5s; }
+        .gallery-item:nth-child(6) { transition-delay: 0.6s; }
+        .gallery-item:nth-child(7) { transition-delay: 0.7s; }
+        .gallery-item:nth-child(8) { transition-delay: 0.8s; }
+        .gallery-item:nth-child(9) { transition-delay: 0.9s; }
+        .gallery-item:nth-child(10) { transition-delay: 1.0s; }
+        .gallery-item:nth-child(11) { transition-delay: 1.1s; }
+        .gallery-item:nth-child(12) { transition-delay: 1.2s; }
+
+        .gallery-item:hover {
+            transform: translateY(-15px) scale(1.03) rotateY(0);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            transform: scale(1);
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            color: var(--light);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            transform: translateY(20px);
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .gallery-location {
+            color: var(--gray);
+            transform: translateY(20px);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .gallery-item:hover .gallery-title,
+        .gallery-item:hover .gallery-location {
+            transform: translateY(0);
+        }
+
+        /* Testimonials Section - Enhanced */
+        .testimonials {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            perspective: 1000px;
+        }
+
+        .testimonial-image-container {
+            width: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(50px) rotateX(15deg);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .testimonial-image-container.in-view {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+
+        .testimonial-image-container:nth-child(1) { transition-delay: 0.2s; }
+        .testimonial-image-container:nth-child(2) { transition-delay: 0.4s; }
+        .testimonial-image-container:nth-child(3) { transition-delay: 0.6s; }
+
+        .testimonial-image-container:hover {
+            transform: translateY(-15px) rotateX(0) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .testimonial-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            transition: var(--transition);
+            transform: scale(1);
+        }
+
+        .testimonial-image-container:hover .testimonial-image {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-image-container {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        /* CTA Section - Enhanced */
+        .cta {
+            text-align: center;
+            background: linear-gradient(rgba(26, 26, 46, 0.9), rgba(26, 26, 46, 0.9)), url('https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover fixed;
+            padding: 120px 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,107,107,0.1), rgba(78,205,196,0.1));
+            z-index: 0;
+        }
+
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta h2.in-view {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s ease 0.3s;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta p.in-view {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s ease 0.5s;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-buttons.in-view {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s ease 0.7s;
+        }
+
+        .cta-button-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--light);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button-secondary:hover {
+            background: var(--primary);
+        }
+
+        /* Floating particles in CTA */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer - Enhanced */
+        footer {
+            background: var(--dark-secondary);
+            padding: 100px 5% 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle fill="%231A1A2E" cx="25" cy="25" r="1"/><circle fill="%231A1A2E" cx="75" cy="75" r="1"/><circle fill="%231A1A2E" cx="75" cy="25" r="1"/><circle fill="%231A1A2E" cx="25" cy="75" r="1"/></svg>');
+            background-size: 100px;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .footer-column.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-column:nth-child(1) { transition-delay: 0.2s; }
+        .footer-column:nth-child(2) { transition-delay: 0.4s; }
+        .footer-column:nth-child(3) { transition-delay: 0.6s; }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .footer-logo:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover span {
+            color: var(--primary);
+        }
+
+        .footer-about p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .footer-column:hover .footer-about p {
+            color: var(--light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--dark);
+            border-radius: 50%;
+            color: var(--light);
+            transition: var(--transition);
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            color: var(--light);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+
+        .footer-column:hover .footer-title {
+            color: var(--accent);
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .footer-column:hover .footer-title::after {
+            width: 80px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+
+        .footer-column:hover .footer-links li {
+            transform: translateX(5px);
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            position: relative;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover::before {
+            width: 100%;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-links a:hover i {
+            transform: rotate(360deg);
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            transition: var(--transition);
+        }
+
+        .footer-column:hover .footer-contact p {
+            color: var(--light);
+            transform: translateX(5px);
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .footer-column:hover .footer-contact i {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(108, 117, 125, 0.2);
+            color: var(--gray);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* New Animations */
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideRightFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideLeftFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(10deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .stop-content {
+                width: 48%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .journey-path {
+                left: 40px;
+            }
+
+            .journey-stops {
+                gap: 60px;
+            }
+
+            .journey-stop {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stop-left, .stop-right {
+                justify-content: flex-start;
+                text-align: left;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+
+            .stop-content {
+                width: 100%;
+            }
+
+            .stop-marker {
+                left: 40px;
+                transform: translateX(0);
+            }
+
+            .stop-icon {
+                left: 40px;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--dark-secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                z-index: 999;
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .package-card {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .highlight-card {
+                transform: scale(1);
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image, .about-text {
+                width: 100%;
+            }
+
+            .cta {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 80px 5%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .feature-box {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo"><i class="fas fa-mountain"></i>Wanderlust<span>Escape</span></a>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#itinerary">Itinerary</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+        </ul>
+    </header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+    <div class="hero-content">
+        <h1>Uttarakhand Escape: Himalayan Adventure</h1>
+        <p>Embark on an unforgettable 9-day journey through the breathtaking landscapes of Uttarakhand. Experience wildlife safaris, mountain retreats, and spiritual riverside towns.</p>
+        <div class="hero-buttons">
+            <a href="#packages" class="cta-button">Explore Packages</a>
+            <a href="#itinerary" class="cta-button cta-button-secondary">View Itinerary</a>
+        </div>
+    </div>
+    <div class="scroll-down" id="scroll-down">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+   <!-- About Section -->
+<section class="section" id="about">
+    <div class="section-title">
+        <h2>About The <span>Trip</span></h2>
+        <p>Discover the magic of Uttarakhand with our carefully curated itinerary from Mumbai to Delhi.</p>
+    </div>
+    <div class="about-content">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1689676452888-c9ccc1896e96?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Uttarakhand Mountains">
+        </div>
+        <div class="about-text">
+            <h3>Why Choose This Trip?</h3>
+            <p>Our Uttarakhand Escape tour is the perfect blend of wildlife, mountain retreats, and adventure. This 9-day trip offers a premium experience in one of India's most beautiful regions.</p>
+            <p>From the jungles of Jim Corbett to the lakes of Nainital, the hills of Mussoorie to the spiritual rivers of Rishikesh - this trip has something for everyone.</p>
+            <div class="about-features">
+                <div class="feature-box">
+                    <i class="fas fa-paw"></i>
+                    <h4>Wildlife Safari</h4>
+                    <p>Experience thrilling jungle safari at Jim Corbett National Park</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-water"></i>
+                    <h4>River Rafting</h4>
+                    <p>Exciting white water rafting experience in Rishikesh included</p>
+                </div>
+                <div class="feature-box">
+                    <i class="fas fa-mountain"></i>
+                    <h4>Mountain Retreats</h4>
+                    <p>Explore beautiful hill stations of Nainital and Mussoorie</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Itinerary Section -->
+<section class="section itinerary" id="itinerary">
+    <div class="section-title">
+        <h2>9-Day Uttarakhand <span>Itinerary</span></h2>
+        <p>From Mumbai to Jim Corbett, Nainital, Mussoorie & Rishikesh</p>
+    </div>
+    <div class="journey-container">
+        <div class="journey-path"></div>
+        <div class="journey-stops">
+            <!-- Day 1 -->
+            <div class="journey-stop stop-left">
+                <div class="stop-content">
+                    <div class="stop-date"><i class="far fa-calendar-alt"></i> Day 1: 11 Jan</div>
+                    <h3 class="stop-title">Mumbai to Delhi by Garib Rath Express</h3>
+                    <p class="stop-description">Evening departure from Mumbai by Garib Rath Express (approx 8:15 PM). Overnight train journey to Delhi.</p>
+                    <img src="https://images.unsplash.com/photo-1637995735729-c43250f1ef47?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Train Journey" class="stop-image">
+                </div>
+                <div class="stop-marker"></div>
+                <div class="stop-icon train">
+                    <i class="fas fa-train"></i>
+                </div>
+            </div>
+            
+            <!-- Day 2 -->
+            <div class="journey-stop stop-right">
+                <div class="stop-content">
+                    <div class="stop-date"><i class="far fa-calendar-alt"></i> Day 2: 12 Jan</div>
+                    <h3 class="stop-title">Delhi to Jim Corbett National Park</h3>
+                    <p class="stop-description">Morning arrival in Delhi. Transfer to Jim Corbett (6-7 hours). Check into resort. Overnight stay. Enjoy Pool Party With DJ</p>
+                    <img src="https://images.unsplash.com/photo-1586183189334-1ad3cd238e21?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Jim Corbett" class="stop-image">
+                </div>
+                <div class="stop-marker"></div>
+                <div class="stop-icon">
+                    <i class="fas fa-paw"></i>
+                </div>
+            </div>
+            
+            <!-- Day 3 -->
+            <div class="journey-stop stop-left">
+                <div class="stop-content">
+                    <div class="stop-date"><i class="far fa-calendar-alt"></i> Day 3: 13 Jan</div>
+                    <h3 class="stop-title">Jim Corbett to Nainital</h3>
+                    <p class="stop-description">Morning safari, Corbett Musuem. Afternoon drive to Nainital (3 hours). Check into hotel. Visit Naini Lake and Mall Road in evening. Overnight stay.</p>
+                    <img src="https://images.unsplash.com/photo-1669021820355-7186908380d9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Nainital" class="stop-image">
+                </div>
+                <div class="stop-marker"></div>
+                <div class="stop-icon">
+                    <i class="fas fa-lake"></i>
+                </div>
+            </div>
+            
+            <!-- Day 4 -->
+            <div class="journey-stop stop-right">
+                <div class="stop-content">
+                    <div class="stop-date"><i class="far fa-calendar-alt"></i> Day 4: 14 Jan</div>
+                    <h3 class="stop-title">Nainital to Mussoorie (Overnight Journey)</h3>
+                    <p class="stop-description">Enjoy Boating at nainital, snow view point and explore other local places and Evening departure from Nainital after dinner. Overnight journey to Mussoorie by private bus (approx 6 hours). Arrive early morning next day.</p>
+                    <img src="https://images.unsplash.com/photo-1667029838861-2fe3a590a1d2?q=80&w=1236&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mussoorie" class="stop-image">
+                </div>
+                <div class="stop-marker"></div>
+                <div class="stop-icon bus">
+                    <i class="fas fa-bus"></i>
+                </div>
+            </div>
+            
+            <!-- Day 5 -->
+            <div class="journey-stop stop-left">
+                <div class="stop-content">
+                    <div class="stop-date"><i class="far fa-calendar-alt"></i> Day 5: 15 Jan</div>
+                    <h3 class="stop-title">Mussoorie Sightseeing</h3>
+                    <p class="stop-description">Full day exploring Kempty Falls, Gun Hill, Camel's Back Road. Check into hotel. Optional cable car ride. First overnight stay in Mussoorie.</p>
+                    <img src="https://images.unsplash.com/photo-1692759873258-2e412db7ad6c?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mussoorie Sightseeing" class="stop-image">
+                </div>
+                <div class="stop-marker"></div>
+                <div class="stop-icon mountain">
+                    <i class="fas fa-mountain"></i>
+                </div>
+            </div>
+            
+            <!-- Day 6 -->
+            <div class="journey-stop stop-right">
+                <div class="stop-content">
+                    <div class="stop-date"><i class="far fa-calendar-alt"></i> Day 6: 16 Jan</div>
+                    <h3 class="stop-title">Mussoorie Leisure Day</h3>
+                    <p class="stop-description">Day at leisure for optional activities - Company Garden, Mall Road shopping, or relaxing at the hotel. Second overnight stay in Mussoorie.</p>
+                    <img src="https://images.unsplash.com/photo-1655916312035-3e72cecef11b?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mussoorie Leisure" class="stop-image">
+                </div>
+                <div class="stop-marker"></div>
+                <div class="stop-icon">
+                    <i class="fas fa-umbrella-beach"></i>
+                </div>
+            </div>
+            
+            <!-- Day 7 -->
+            <div class="journey-stop stop-left">
+                <div class="stop-content">
+                    <div class="stop-date"><i class="far fa-calendar-alt"></i> Day 7: 17 Jan</div>
+                    <h3 class="stop-title">Mussoorie to Rishikesh</h3>
+                    <p class="stop-description">Morning drive to Rishikesh (4 hours).Morning river rafting. Visit Laxman Jhula, Ramjhula.Evening Ganga Aarti at Triveni Ghat. Riverside Camping , Overnight stay and Poolparty with bonfire at camp.</p>
+                    <img src="https://images.unsplash.com/photo-1713340546638-5e30e2b7b1fe?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Rishikesh" class="stop-image">
+                </div>
+                <div class="stop-marker"></div>
+                <div class="stop-icon">
+                    <i class="fas fa-campground"></i>
+                </div>
+            </div>
+            
+            <!-- Day 8 -->
+            <div class="journey-stop stop-right">
+                <div class="stop-content">
+                    <div class="stop-date"><i class="far fa-calendar-alt"></i> Day 8: 18 Jan</div>
+                    <h3 class="stop-title">Rishikesh to Delhi via Haridwar</h3>
+                    <p class="stop-description"> Afternoon excursion to Haridwar for Har Ki Pauri Ganga Aarti. Overnight drive to Delhi (5-6 hours).</p>
+                    <img src="https://images.unsplash.com/photo-1511754863001-18d44abd0a93?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Haridwar" class="stop-image">
+                </div>
+                <div class="stop-marker"></div>
+                <div class="stop-icon temple">
+                    <i class="fas fa-place-of-worship"></i>
+                </div>
+            </div>
+            
+            <!-- Day 9 -->
+            <div class="journey-stop stop-left">
+                <div class="stop-content">
+                    <div class="stop-date"><i class="far fa-calendar-alt"></i> Day 9: 19 Jan</div>
+                    <h3 class="stop-title">Delhi to Mumbai by Garib Rath</h3>
+                    <p class="stop-description">Reach Delhi. board Garib Rath Express to Mumbai. Arrive next morning with unforgettable memories.</p>
+                    <img src="https://images.unsplash.com/photo-1660145416818-b9a2b1a1f193?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Return Journey" class="stop-image">
+                </div>
+                <div class="stop-marker"></div>
+                <div class="stop-icon train">
+                    <i class="fas fa-train"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<!-- Hotels Section -->
+<section class="section hotels" id="hotels">
+    <div class="section-title">
+        <h2>Our <span>Hotels</span></h2>
+        <p>Comfortable accommodations at each destination during your journey</p>
+    </div>
+    
+    <div class="hotel-container">
+        <!-- First Row -->
+        <div class="hotel-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 30px;">
+            <!-- Jim Corbett -->
+            <div class="hotel-card" style="flex: 0 0 calc(50% - 30px); max-width: 500px; background: var(--dark-secondary); border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);">
+                <div class="hotel-image" style="height: 250px; overflow: hidden;">
+                    <img src="https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/201807091755586352-d06cd7da934b11e993de0242ac110003.jpg?&output-quality=75&downsize=520:350&crop=520:350;2,0&output-format=jpg&downsize=480:336&crop=480:336" alt="Tiger Groove Resort" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="hotel-info" style="padding: 20px;">
+                    <h4 style="font-size: 1.4rem; margin-bottom: 10px; color: var(--light);">Tiger Groove Resort</h4>
+                    <div class="hotel-rating" style="color: var(--accent); margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem; margin-left: 10px;">4.5/5 (Jim Corbett)</span>
+                    </div>
+                    <p class="hotel-description" style="color: var(--gray); margin-bottom: 15px; font-size: 1rem;">
+                        Luxurious jungle resort with modern amenities and close proximity to Jim Corbett National Park.
+                    </p>
+                    <div class="hotel-features" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-wifi"></i> Free WiFi
+                        </span>
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-utensils"></i> Restaurant
+                        </span>
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-swimming-pool"></i> Swimming Pool
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nainital -->
+            <div class="hotel-card" style="flex: 0 0 calc(50% - 30px); max-width: 500px; background: var(--dark-secondary); border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);">
+                <div class="hotel-image" style="height: 250px; overflow: hidden;">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/688961423.jpg?k=ceb07df20cd10422cb1e1a9414adb502bdfb6edef837bdd6bf5969a34eb201df&o=" alt="Dynasty Resort" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="hotel-info" style="padding: 20px;">
+                    <h4 style="font-size: 1.4rem; margin-bottom: 10px; color: var(--light);">Dynasty Resort</h4>
+                    <div class="hotel-rating" style="color: var(--accent); margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem; margin-left: 10px;">4/5 (Nainital)</span>
+                    </div>
+                    <p class="hotel-description" style="color: var(--gray); margin-bottom: 15px; font-size: 1rem;">
+                        Beautiful resort with stunning views of the mountains and Naini Lake, featuring comfortable rooms and excellent service.
+                    </p>
+                    <div class="hotel-features" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-mountain"></i> Lake View
+                        </span>
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-spa"></i> Spa
+                        </span>
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-parking"></i> Parking
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Second Row -->
+        <div class="hotel-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+            <!-- Mussoorie -->
+            <div class="hotel-card" style="flex: 0 0 calc(50% - 30px); max-width: 500px; background: var(--dark-secondary); border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);">
+                <div class="hotel-image" style="height: 250px; overflow: hidden;">
+                    <img src="https://assets.simplotel.com/simplotel/image/upload/q_90,fl_progressive,w_1920/c_pad/hotel-shiva-continental-mussoorie/Exterior_view_of_our_hotel_in_Mussourie_2" alt="Shiva Continental" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="hotel-info" style="padding: 20px;">
+                    <h4 style="font-size: 1.4rem; margin-bottom: 10px; color: var(--light);">Shiva Continental</h4>
+                    <div class="hotel-rating" style="color: var(--accent); margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem; margin-left: 10px;">4.5/5 (Mussoorie)</span>
+                    </div>
+                    <p class="hotel-description" style="color: var(--gray); margin-bottom: 15px; font-size: 1rem;">
+                        Premium hotel located in the heart of Mussoorie with easy access to Mall Road and scenic viewpoints.
+                    </p>
+                    <div class="hotel-features" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-snowflake"></i> Hill View
+                        </span>
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-umbrella-beach"></i> Garden
+                        </span>
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-concierge-bell"></i> Room Service
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rishikesh -->
+            <div class="hotel-card" style="flex: 0 0 calc(50% - 30px); max-width: 500px; background: var(--dark-secondary); border-radius: 15px; overflow: hidden; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);">
+                <div class="hotel-image" style="height: 250px; overflow: hidden;">
+                    <img src="https://shivpuricamping.com/img/aq/1.jpg" alt="Deluxe Camp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="hotel-info" style="padding: 20px;">
+                    <h4 style="font-size: 1.4rem; margin-bottom: 10px; color: var(--light);">Deluxe Camp</h4>
+                    <div class="hotel-rating" style="color: var(--accent); margin-bottom: 10px;">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span style="color: var(--gray); font-size: 0.9rem; margin-left: 10px;">5/5 (Rishikesh)</span>
+                    </div>
+                    <p class="hotel-description" style="color: var(--gray); margin-bottom: 15px; font-size: 1rem;">
+                        Riverside camping experience with comfortable tents, bonfire facilities, and adventure activities.
+                    </p>
+                    <div class="hotel-features" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-campground"></i> Riverside
+                        </span>
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-fire"></i> Bonfire
+                        </span>
+                        <span style="background: rgba(30, 30, 62, 0.7); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-water"></i> Rafting
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Packages Section -->
+<section class="section packages" id="packages" style="padding: 60px 5%;">
+    <div class="section-title" style="margin-bottom: 30px;">
+        <h2>Our <span>Packages</span></h2>
+        <p style="max-width: 700px; margin: 0 auto;">Choose the perfect package for your Uttarakhand adventure</p>
+    </div>
+    
+    <div class="package-cards" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+        <!-- Premium Package -->
+        <div class="package-card" style="width: 100%; max-width: 800px; background: var(--dark-secondary); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-left: 5px solid var(--primary);">
+            <div style="display: flex; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px; padding: 30px; background: rgba(30,30,62,0.7);">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 15px; color: var(--light);">Premium Package</h3>
+                    <div style="margin-bottom: 15px;">
+                        <div style="font-size: 1.1rem; color: var(--gray); margin-bottom: 5px;">Normal Price:</div>
+                        <div style="font-size: 1.8rem; color: var(--gray); text-decoration: line-through;">₹15,500</div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <div style="font-size: 1.1rem; color: var(--accent); margin-bottom: 5px;">Early Bird Offer:</div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);">₹15,000</div>
+                        <div style="color: var(--accent); font-size: 0.9rem;">
+                            <i class="fas fa-bolt"></i> Limited to first 25 bookings
+                        </div>
+                    </div>
+                    <div style="color: var(--gray); margin-bottom: 20px; font-size: 1.1rem;">
+                        <i class="far fa-clock"></i> 9 Days / 8 Nights
+                    </div>
+                    <a href="https://forms.gle/Z112Srauxe3TWVpx9" class="package-button" style="display: inline-block; padding: 12px 30px; background: linear-gradient(to right, var(--primary), var(--secondary)); color: var(--light); text-decoration: none; border-radius: 30px; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; width: 100%; text-align: center; font-size: 1.1rem;">
+                        Book Now
+                    </a>
+                </div>
+                
+                <div style="flex: 1; min-width: 300px; padding: 30px;">
+                    <h4 style="font-size: 1.3rem; margin-bottom: 15px; color: var(--light); border-bottom: 1px solid rgba(108,117,125,0.2); padding-bottom: 10px;">Package Inclusions</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
+                            <span style="color: var(--gray);">3 Tier AC train</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
+                            <span style="color: var(--gray);">Premium Hotels</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
+                            <span style="color: var(--gray);">Daily Meals</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
+                            <span style="color: var(--gray);">Private Transport</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
+                            <span style="color: var(--gray);">All Sightseeing</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
+                            <span style="color: var(--gray);">River Rafting</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
+                            <span style="color: var(--gray);">Jungle Safari</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <i class="fas fa-check" style="color: var(--secondary); margin-right: 10px;"></i>
+                            <span style="color: var(--gray);">Bonfire + DJ Night + Pool party</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="section-title">
+            <h2>Trip <span>Gallery</span></h2>
+            <p>Explore the breathtaking destinations you'll visit on this amazing journey</p>
+        </div>
+        <div class="gallery-container">
+            <!-- Empty gallery items - add your image links here -->
+            <div class="gallery-item">
+                <img src="1.jpg" alt="Destination 1" class="gallery-image">
+                
+            </div>
+            <div class="gallery-item">
+                <img src="2.jpg" alt="Destination 2" class="gallery-image">
+                
+            </div>
+            <div class="gallery-item">
+                <img src="3.jpg" alt="Destination 3" class="gallery-image">
+                
+            </div>
+            <div class="gallery-item">
+                <img src="4.jpg" alt="Destination 4" class="gallery-image">
+               
+            </div>
+            <div class="gallery-item">
+                <img src="5.jpg" alt="Destination 5" class="gallery-image">
+                
+            </div>
+            <div class="gallery-item">
+                <img src="6.jpg" alt="Destination 6" class="gallery-image">
+              
+            </div>
+            <div class="gallery-item">
+                <img src="7.jpg" alt="Destination 7" class="gallery-image">
+                
+            </div>
+            <div class="gallery-item">
+                <img src="8.jpg" alt="Destination 8" class="gallery-image">
+                
+            </div>
+            <div class="gallery-item">
+                <img src="9.jpg" alt="Destination 9" class="gallery-image">
+                
+            </div>
+            <div class="gallery-item">
+                <img src="10.jpg" alt="Destination 10" class="gallery-image">
+            </div>
+            <div class="gallery-item">
+                <img src="11.jpg" alt="Destination 11" class="gallery-image">
+               
+            </div>
+            <div class="gallery-item">
+                <img src="12.jpg" alt="Destination 12" class="gallery-image">
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="section-title">
+            <h2>Customer <span>Reviews</span></h2>
+            <p>Hear what our previous travelers have to say about their experiences</p>
+        </div>
+        <div class="testimonial-container">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-image-container">
+                <img src="IMG-20250711-WA0111~2.jpg" alt="Neha Bhagat's Review" class="testimonial-image">
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial-image-container">
+                <img src="IMG-20250711-WA0113~2.jpg" alt="Sumit Tayade's Review" class="testimonial-image">
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-image-container">
+                <img src="IMG-20250711-WA0155~2.jpg" alt="Aarav Sinha's Review" class="testimonial-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="particles" id="particles"></div>
+        <h2>Ready for the Adventure of a Lifetime?</h2>
+        <p>Don't miss this opportunity to explore the breathtaking beauty of Himachal Pradesh with your friends. Limited seats available!</p>
+        <div class="cta-buttons">
+            <a href="#packages" class="cta-button cta-button-primary">View Packages</a>
+            <a href="https://forms.gle/Z112Srauxe3TWVpx9" class="cta-button cta-button-secondary">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <a href="#" class="footer-logo">Wanderlust<span>Escape</span></a>
+                <div class="footer-about">
+                    <p>We specialize in creating unforgettable travel experiences for college students, combining adventure, culture, and fun at affordable prices.</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://wa.me/919021997018" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/tfchetan" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/himalayanescape" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                    <li><a href="#itinerary"><i class="fas fa-chevron-right"></i> Itinerary</a></li>
+                    <li><a href="#packages"><i class="fas fa-chevron-right"></i> Packages</a></li>
+                    <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Contact Us</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone-alt"></i> +919021997018</p>
+                    <p><i class="fas fa-envelope"></i> chetancdhri@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra, India</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Wanderlust Escape. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            header.classList.toggle('scrolled', currentScroll > 50);
+            
+            if (currentScroll <= 50) {
+                header.classList.remove('hide');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('hide')) {
+                // Scroll down
+                header.classList.add('hide');
+            } else if (currentScroll < lastScroll && header.classList.contains('hide')) {
+                // Scroll up
+                header.classList.remove('hide');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll down button
+        document.getElementById('scroll-down').addEventListener('click', function() {
+            window.scrollBy({
+                top: window.innerHeight - 80,
+                behavior: 'smooth'
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.section-title, .journey-stop, .package-card, .gallery-item, .testimonial-image-container, .footer-column').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Observe CTA elements separately for staggered animation
+        const ctaObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const h2 = entry.target.querySelector('h2');
+                    const p = entry.target.querySelector('p');
+                    const buttons = entry.target.querySelector('.cta-buttons');
+                    
+                    if (h2) h2.classList.add('in-view');
+                    if (p) setTimeout(() => p.classList.add('in-view'), 200);
+                    if (buttons) setTimeout(() => buttons.classList.add('in-view'), 400);
+                    
+                    ctaObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const ctaSection = document.querySelector('.cta');
+        if (ctaSection) ctaObserver.observe(ctaSection);
+
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Floating particles in CTA
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration between 10s and 20s
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.5;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles when CTA section is in view
+        const particlesObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                createParticles();
+                particlesObserver.unobserve(entries[0].target);
+            }
+        }, { threshold: 0.1 });
+
+        const ctaParticles = document.querySelector('.cta');
+        if (ctaParticles) particlesObserver.observe(ctaParticles);
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+            
+            const scrollPosition = window.pageYOffset;
+            hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+            
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+            }
+        });
+
+        // Hover effect for gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const overlay = item.querySelector('.gallery-overlay');
+                if (overlay) {
+                    overlay.style.opacity = '1';
+                    overlay.querySelector('.gallery-title').style.transform = 'translateY(0)';
+                    overlay.querySelector('.gallery-location').style.transform = 'translateY(0)';
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                const overlay = item.querySelector('.gallery-overlay');
+                if (overlay) {
+                    overlay.style.opacity = '0';
+                    overlay.querySelector('.gallery-title').style.transform = 'translateY(20px)';
+                    overlay.querySelector('.gallery-location').style.transform = 'translateY(20px)';
+                }
+            });
+        });
+
+         // Observe hotel categories
+    const hotelObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.hotel-category').forEach(category => {
+        hotelObserver.observe(category);
+    });
+    </script>
+</body>
+</html>
